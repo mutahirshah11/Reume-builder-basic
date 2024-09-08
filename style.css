@@ -1,27 +1,35 @@
 body { 
     width: auto;
-    font-family: cursive;
+    font-family: cursive ;
     margin: 20px;
     padding: 0;
-    background-color: #d8dbe2;
+    background-color: #d8dbe2
+
 }
+
+
 
 #heading { 
     text-align: center;
     border: 2px solid black;
     border-radius: 10px;
-    background-color: #58a4b0;
+    background-color: #58a4b0
 }
 
+
+
+
+
 form { 
-    width: 700px;
-    height: auto;
-    margin: auto;
-    margin-top: 30px;
+   width: 700px;
+   height: auto ;
+   margin: auto;
+   margin-top: 30px;
     padding-top: 50px;
     border: 2px solid rgb(0, 0, 0);
     border-radius: 20px;
-    background-color: #a9bcd0;
+    background-color: #a9bcd0 
+  
 }
 
 form:hover { 
@@ -33,29 +41,84 @@ fieldset {
     border-radius: 10%;
     padding: 25px;
     margin-bottom: 20px;
+    
+}
+
+
+
+legend { 
+    font-family :Verdana, Geneva, Tahoma, sans-serif; 
+    font-size: 20px;
+    text-align: center;
+    
 }
 
 label { 
-    display: block;
+    font-family: cursive ;
+    font-weight: 50px;
+    display: flex;
     margin-top: 10px;
+    
 }
 
-input, textarea { 
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
+input  , textarea { 
+    width: calc(100% - 1px) ; 
+    height: fit-content;
     border: 2px solid gray;
-    border-radius: 5px;
+    
 }
 
-.profile-picture-preview {
+textarea { 
+    border-radius: 10px;
+}
+
+button { 
+    
     display: block;
-    margin: 10px auto;
+    width: 100px;
+    padding: 10px;
+    background-color: rgb(177, 255, 177);
+    border-radius: 10%;
+    cursor: pointer;
+    margin-left: 300px;
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    
+
+}
+
+button:hover { 
+    background-color: rgb(255, 131, 131);
+}
+
+
+#resumeOutput { 
+    width: 600px;
+    margin-top: 100px;
+    margin-left: 30.5%;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: #a9bcd0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
+
+}
+
+#resumeOutput h2 { 
+
+    color: black;
+
+}
+
+
+#profilepicture { 
+    display: block;
+    margin: 0 auto;
     border: 2px solid #a9bcd0;
-    box-shadow: 0px 4px 8px rgba(11, 7, 211, 0.5);
-    border-radius: 50%;
+    box-shadow: 0px 4px 8px rgba(11 , 7 , 211 , 0.5);
+    border-radius: 500%;
     width: 150px;
     height: 150px;
     object-fit: cover;
-    overflow: hidden;
 }
