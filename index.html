@@ -3,79 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume </title>
+    <title>Resume</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="heading">
-    <h2>RESUME BUILDER </h2>
-     </div>
+        <h2>EDITABLE DYNAMIC RESUME BUILDER</h2>
+    </div>
     <form id="resumeform">
-
         <!-- personal info -->
-
         <fieldset>
             <legend>Personal Information</legend>
+            <!-- profile picture -->
+            <label for="profilepicture">Profile Picture</label>
+            <input type="file" name="profilepicture" id="profilepicture" required>
+            <img id="previewImage" src="" alt="Profile Picture Preview" class="profile-picture-preview">
 
-            <label for="name">Name </label>
+            <label for="name">Name</label>
             <input type="text" name="name" id="name" required>
 
-            <label for="email">Email </label>
+            <label for="email">Email Address</label>
             <input type="email" name="email" id="email" required>
 
-            <label for="phone">Phone Number </label>
+            <label for="phone">Mobile Phone Number</label>
             <input type="tel" name="phone" id="phone" required>
-            
 
+            <label for="address">Address</label>
+            <input type="text" name="address" id="address" required>
         </fieldset>
-        <br/>
 
         <!-- education -->
-
-
         <fieldset>
             <legend>Education</legend>
-            <label for="education">Eduucation</label>
+            <label for="education">Education</label>
             <textarea name="education" id="education" rows="5" required></textarea>
-
-
-           
         </fieldset>
-        <br/>
 
-      <!-- experience -->
-
-      <fieldset>
-
+        <!-- experience -->
+        <fieldset>
             <legend>Experience</legend>
-
             <label for="experience">Experience</label>
-            
-            <textarea name="Experience" id="experience" rows="5" required></textarea>
-
-
-           
+            <textarea name="experience" id="experience" rows="5" required></textarea>
         </fieldset>
-        <br/>
-          
-         <!-- Skills -->
 
-      <fieldset>
+        <!-- skills -->
+        <fieldset>
+            <legend>Skills</legend>
+            <label for="skills">Skills</label>
+            <textarea name="skills" id="skills" rows="5" required></textarea>
+        </fieldset>
 
-      <legend>Skills</legend>
-
-      <label for="Skills">Skills</label>
-      
-      <textarea name="skills" id="skills" rows="5" required></textarea>
-
-
-      
-
-  </fieldset>
-        
-       <Button type="submit">Sumbit</Button>
+        <button type="submit">Submit</button>
     </form>
 
-    
+    <div id="resumeOutput"></div>
+    <script src="main.js"></script>
 </body>
 </html>
