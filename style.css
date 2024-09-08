@@ -95,7 +95,7 @@ button:hover {
 #resumeOutput { 
     width: 600px;
     margin-top: 100px;
-    margin-left: 30.5%;
+    margin-left: 920px;
     padding: 20px;
     border: 2px solid black;
     border-radius: 8px;
@@ -114,10 +114,10 @@ button:hover {
 
 #profilepicture { 
     display: block;
-    margin: 0 auto;
+    margin: 0px auto;
     border: 2px solid #a9bcd0;
     box-shadow: 0px 4px 8px rgba(11 , 7 , 211 , 0.5);
-    border-radius: 500%;
+    border-radius: 50%;
     width: 150px;
     height: 150px;
     object-fit: cover;
