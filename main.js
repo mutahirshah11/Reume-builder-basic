@@ -48,7 +48,9 @@ var _a;
     var experienceElement = document.getElementById('experience');
     var skillsElement = document.getElementById('skills');
     var usernameElement = document.getElementById('username');
+    // Check if all the required elements exist
     if (nameElement && usernameElement && pictureElement && addressElement && emailElement && phoneElement && educationElement && experienceElement && skillsElement) {
+        // Gather all the form data
         var picture = (_a = pictureElement.files) === null || _a === void 0 ? void 0 : _a[0];
         var pictureurl = picture ? URL.createObjectURL(picture) : "";
         var name_1 = nameElement.value;
@@ -58,57 +60,65 @@ var _a;
         var education = educationElement.value;
         var experience = experienceElement.value;
         var skills = skillsElement.value;
-        var username_1 = usernameElement.value;
-        var uniquePath = "resume/".concat(username_1.replace(/\s+/g, '_'), "_cv.html");
-        var resumeOutput = "\n            <h2>Personal Information</h2>\n            ".concat(pictureurl ? "<img src=\"".concat(pictureurl, "\" alt=\"Profile picture\" class=\"profile-picture-preview\">") : '', "\n            <p><strong>Name:</strong> ").concat(name_1, "</p>\n            <p><strong>Email:</strong> ").concat(email, "</p>\n            <p><strong>Phone:</strong> ").concat(phone, "</p>\n            <p><strong>Address:</strong> ").concat(address, "</p>\n            <h2>Education</h2>\n            <p><strong>Education:</strong> ").concat(education, "</p>\n            <h2>Experience</h2>\n            <p><strong>Experience:</strong> ").concat(experience, "</p>\n            <h2>Skills</h2>\n            <p><strong>Skills:</strong> ").concat(skills, "</p>\n        ");
+        var username_1 = usernameElement.value.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, ''); // Sanitize username
+        var uniquePath = "resume/".concat(username_1, "_cv.html");
+        // HTML content for the resume
+        var resumeOutput = "\n            <h2>Personal Information</h2>\n            ".concat(pictureurl ? "<img src=\"".concat(pictureurl, "\" alt=\"Profile picture\" class=\"profile-picture-preview\">") : '', "\n            <p><strong>Name:</strong> ").concat(name_1, "</p>\n            <p><strong>Email:</strong> ").concat(email, "</p>\n            <p><strong>Phone:</strong> ").concat(phone, "</p>\n            <p><strong>Address:</strong> ").concat(address, "</p>\n            <h2>Education</h2>\n            <p> ").concat(education, "</p>\n            <h2>Experience</h2>\n            <p>").concat(experience, "</p>\n            <h2>Skills</h2>\n            <p>").concat(skills, "</p>\n        ");
+        // Create the download link for the HTML resume
         var downloadLink = document.createElement('a');
         downloadLink.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(resumeOutput);
         downloadLink.download = uniquePath;
         downloadLink.textContent = 'Download your resume 2024';
         var resumeOutputElement = document.getElementById('resumeOutput');
-        if (resumeOutputElement) {
-            resumeOutputElement.innerHTML = resumeOutput;
-            resumeOutputElement.classList.remove("hidden");
-            // Container for buttons
-            var buttonsContainer = document.createElement("div");
-            buttonsContainer.id = "buttonContainer";
-            resumeOutputElement.appendChild(buttonsContainer);
-            // Download PDF button
-            var downloadButton = document.createElement("button");
-            downloadButton.textContent = "Download PDF";
-            downloadButton.addEventListener("click", function () {
-                window.print();
-            });
-            buttonsContainer.appendChild(downloadButton);
-            // Add shareable link
-            var shareLinkButton = document.createElement("button");
-            shareLinkButton.textContent = "Copy Shareable link";
-            shareLinkButton.addEventListener("click", function () { return __awaiter(_this, void 0, void 0, function () {
-                var shareableLink, err_1;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            _a.trys.push([0, 2, , 3]);
-                            shareableLink = "https://yourdomain.com/resumes/".concat(username_1.replace(/\s+/g, '_'), "_cv.html");
-                            return [4 /*yield*/, navigator.clipboard.writeText(shareableLink)];
-                        case 1:
-                            _a.sent();
-                            alert("Shareable link copied to clipboard");
-                            return [3 /*break*/, 3];
-                        case 2:
-                            err_1 = _a.sent();
-                            console.error("Failed to copy link", err_1);
-                            alert("Failed to Copy link to clipboard. Please Try again");
-                            return [3 /*break*/, 3];
-                        case 3: return [2 /*return*/];
-                    }
-                });
-            }); });
-            buttonsContainer.appendChild(shareLinkButton);
-            resumeOutputElement.appendChild(downloadLink);
+        if (!resumeOutputElement) {
+            console.error("Resume output container not found!");
+            return;
         }
+        // Insert resume content into the output container
+        resumeOutputElement.innerHTML = resumeOutput;
+        resumeOutputElement.classList.remove("hidden");
+        // Container for buttons (PDF and Shareable link)
+        var buttonsContainer = document.createElement("div");
+        buttonsContainer.id = "buttonContainer";
+        resumeOutputElement.appendChild(buttonsContainer);
+        // Download PDF button
+        var downloadButton = document.createElement("button");
+        downloadButton.textContent = "Download PDF";
+        downloadButton.addEventListener("click", function () {
+            window.print(); // Triggers the browser's print functionality for PDF generation
+        });
+        buttonsContainer.appendChild(downloadButton);
+        // Shareable link button with async/await for clipboard handling
+        var shareLinkButton = document.createElement("button");
+        shareLinkButton.textContent = "Copy Shareable link";
+        shareLinkButton.addEventListener("click", function () { return __awaiter(_this, void 0, void 0, function () {
+            var shareableLink, err_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        shareableLink = "https://yourdomain.com/resumes/".concat(username_1, "_cv.html");
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, navigator.clipboard.writeText(shareableLink)];
+                    case 2:
+                        _a.sent(); // Copy the link to clipboard
+                        alert("Shareable link copied to clipboard");
+                        return [3 /*break*/, 4];
+                    case 3:
+                        err_1 = _a.sent();
+                        console.error("Failed to copy the link", err_1);
+                        alert("Failed to copy link to clipboard. Please try again.");
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        }); });
+        buttonsContainer.appendChild(shareLinkButton);
+        // Append the download link for the HTML resume
+        resumeOutputElement.appendChild(downloadLink);
     }
     else {
-        console.error('One or more output elements are missing');
+        console.error('One or more form elements are missing');
     }
 });
