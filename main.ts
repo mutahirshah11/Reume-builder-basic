@@ -28,19 +28,23 @@ document.getElementById('resumeform')?.addEventListener('submit', function (even
         const uniquePath = `resume/${username}_cv.html`;
 
         // HTML content for the resume
-        const resumeOutput = `
-            <h2>Personal Information</h2>
-            ${pictureurl ? `<img src="${pictureurl}" alt="Profile picture" class="profile-picture-preview">` : ''}
+        const resumeOutput = 
+        `
+          
+           <div>${pictureurl ? `<img src="${pictureurl}" alt="Profile picture" class="profile-picture-preview">` : ''}</div>
+          
+            <h2> - Personal Information</h2>
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone}</p>
             <p><strong>Address:</strong> ${address}</p>
-            <h2>Education</h2>
+            <h2>- Education</h2>
             <p> ${education}</p>
-            <h2>Experience</h2>
+            <h2>- Experience</h2>
             <p>${experience}</p>
-            <h2>Skills</h2>
+            <h2> - Skills</h2>
             <p>${skills}</p>
+             
         `;
 
         // Create the download link for the HTML resume
